@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Canal oficial de promoções no Telegram. Eletrônicos, moda, cursos com até 80% de desconto. Entre grátis agora.">
+  <meta name="theme-color" content="#2AABEE">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <title>TelegramPromoções — Promoções chegam aqui primeiro</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* CSS RESET & VARIABLES */
+    /* ═══════════════════════════════════════════════════════════════ */
+    
+    :root {
+      --tg-blue: #2AABEE;
+      --tg-blue2: #1e96d3;
+      --tg-dark: #17212b;
+      --tg-darker: #0e1621;
+      --tg-panel: #213040;
+      --tg-bubble-in: #182533;
+      --tg-bubble-out: #2b5278;
+      --tg-header: #1c2f3f;
+      --tg-divider: rgba(255,255,255,0.07);
+      --tg-text: #e8edf5;
+      --tg-muted: #6d8096;
+      --tg-online: #4dcd5e;
+      --gold: #f5a623;
+      --red: #e53935;
+      --green: #4dcd5e;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--tg-darker);
+      color: var(--tg-text);
+      overflow-x: hidden;
+      cursor: default;
+      line-height: 1.5;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* WALLPAPER TELEGRAM */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .tg-wallpaper {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-color: var(--tg-darker);
+      overflow: hidden;
+    }
+
+    .tg-wallpaper::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background-image:
+        radial-gradient(circle at 20% 35%, rgba(42, 171, 238, 0.07) 0%, transparent 50%),
+        radial-gradient(circle at 80% 65%, rgba(42, 171, 238, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 50% 10%, rgba(42, 171, 238, 0.04) 0%, transparent 30%);
+    }
+
+    .tg-wallpaper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232AABEE' fill-opacity='1'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3Ccircle cx='60' cy='20' r='2'/%3E%3Ccircle cx='20' cy='60' r='2'/%3E%3Ccircle cx='60' cy='60' r='2'/%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 80px 80px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* LAYOUT BASE */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* NAVBAR */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(13, 20, 28, 0.88);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(42, 171, 238, 0.12);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 1rem;
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo-plane {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--tg-blue), #1a7bb8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(42, 171, 238, 0.35);
+      flex-shrink: 0;
+    }
+
+    .logo-plane svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .logo-text {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+
+    .logo-text span {
+      color: var(--tg-blue);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-members {
+      font-size: 0.78rem;
+      color: var(--tg-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .nav-members {
+        display: none;
+      }
+    }
+
+    .online-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--tg-online);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--tg-online);
+      animation: pulsate 2s ease-in-out infinite;
+    }
+
+    @keyframes pulsate {
+      0%, 100% {
+        box-shadow: 0 0 4px var(--tg-online);
+      }
+      50% {
+        box-shadow: 0 0 12px var(--tg-online), 0 0 20px rgba(77, 205, 94, 0.3);
+      }
+    }
+
+    .btn-join-nav {
+      background: var(--tg-blue);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-join-nav:hover {
+      background: #3dbdf5;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(42, 171, 238, 0.4);
+    }
+
+    .btn-join-nav:active {
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* TICKER */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .ticker-wrap {
+      margin-top: 60px;
+      background: linear-gradient(90deg, #0d1926, var(--tg-panel), #0d1926);
+      border-bottom: 1px solid rgba(42, 171, 238, 0.15);
+      padding: 7px 0;
+      overflow: hidden;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 2.5rem;
+      animation: slide 32s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.77rem;
+      font-weight: 600;
+      color: rgba(232, 237, 245, 0.85);
+      flex-shrink: 0;
+    }
+
+    .ticker-pct {
+      background: var(--red);
+      color: white;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+
+    @keyframes slide {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* HERO SECTION */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2rem;
+      padding: 5rem 4rem 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 5rem 1.5rem 3rem;
+      }
+      .hero-right {
+        display: none;
+      }
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(42, 171, 238, 0.1);
+      border: 1px solid rgba(42, 171, 238, 0.25);
+      color: var(--tg-blue);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      width: fit-content;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    h1 .tg-word {
+      color: var(--tg-blue);
+      position: relative;
+      display: inline-block;
+    }
+
+    h1 .tg-word::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--tg-blue), transparent);
+      border-radius: 2px;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--tg-muted);
+      line-height: 1.75;
+      max-width: 480px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-desc strong {
+      color: var(--tg-text);
+      font-weight: 700;
+    }
+
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--tg-blue), #1a7bb8);
+      color: white;
+      border: none;
+      padding: 18px 40px;
+      border-radius: 14px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      width: fit-content;
+      transition: var(--transition);
+      box-shadow: 0 8px 32px rgba(42, 171, 238, 0.35), 0 2px 8px rgba(0, 0, 0, 0.3);
+      animation: fadeUp 0.6s 0.3s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .btn-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(42, 171, 238, 0.45), 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-hero:hover::before {
+      opacity: 1;
+    }
+
+    .btn-hero:active {
+      transform: translateY(-1px);
+    }
+
+    .btn-hero svg {
+      width: 22px;
+      height: 22px;
+      fill: white;
+    }
+
+    .hero-proof {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .proof-avatars {
+      display: flex;
+    }
+
+    .proof-av {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid var(--tg-darker);
+      margin-left: -10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .proof-av:first-child {
+      margin-left: 0;
+    }
+
+    .proof-text {
+      font-size: 0.83rem;
+      color: var(--tg-muted);
+      line-height: 1.4;
+    }
+
+    .proof-text strong {
+      color: var(--tg-text);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* PHONE MOCKUP */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: floatIn 0.8s 0.3s ease both;
+    }
+
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateX(40px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    .phone-wrap {
+      position: relative;
+      filter: drop-shadow(-24px 24px 60px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 80px rgba(42, 171, 238, 0.15));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .phone {
+      width: 310px;
+      background: #1c2733;
+      border-radius: 40px;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phone-notch {
+      height: 28px;
+      background: #111c26;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .phone-notch::after {
+      content: '';
+      width: 80px;
+      height: 16px;
+      background: #0d1520;
+      border-radius: 0 0 12px 12px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .tg-header-ui {
+      background: var(--tg-header);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tg-channel-avatar {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--tg-blue), #1a7bb8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: white;
+      font-family: 'Unbounded', sans-serif;
+    }
+
+    .tg-channel-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tg-channel-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: white;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tg-channel-sub {
+      font-size: 0.68rem;
+      color: var(--tg-muted);
+      margin-top: 1px;
+    }
+
+    .tg-chat {
+      background: var(--tg-darker);
+      min-height: 420px;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tg-chat::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232AABEE'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3Ccircle cx='0' cy='0' r='3'/%3E%3Ccircle cx='60' cy='0' r='3'/%3E%3Ccircle cx='0' cy='60' r='3'/%3E%3Ccircle cx='60' cy='60' r='3'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .chat-date {
+      text-align: center;
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.35);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3px 10px;
+      border-radius: 8px;
+      align-self: center;
+      margin: 4px 0;
+      font-weight: 600;
+    }
+
+    .msg {
+      max-width: 88%;
+      background: var(--tg-bubble-in);
+      border-radius: 4px 14px 14px 14px;
+      padding: 8px 10px;
+      position: relative;
+      animation: msgPop 0.35s ease both;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    @keyframes msgPop {
+      from {
+        opacity: 0;
+        transform: scale(0.85) translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .msg-1 { animation-delay: 0.5s; }
+    .msg-2 { animation-delay: 1.0s; }
+    .msg-3 { animation-delay: 1.5s; }
+    .msg-4 { animation-delay: 2.0s; }
+    .msg-5 { animation-delay: 2.5s; }
+
+    .msg-emoji {
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .msg-category {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--tg-blue);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .msg-product {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.3;
+      margin-bottom: 5px;
+    }
+
+    .msg-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .msg-price {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--gold);
+      font-family: 'Unbounded', sans-serif;
+    }
+
+    .msg-price-old {
+      font-size: 0.65rem;
+      color: var(--tg-muted);
+      text-decoration: line-through;
+    }
+
+    .msg-discount {
+      font-size: 0.6rem;
+      background: var(--red);
+      color: white;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .msg-link {
+      font-size: 0.65rem;
+      color: var(--tg-blue);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .msg-time {
+      font-size: 0.58rem;
+      color: var(--tg-muted);
+      text-align: right;
+      margin-top: 2px;
+    }
+
+    .msg-reactions {
+      display: flex;
+      gap: 4px;
+      margin-top: 5px;
+    }
+
+    .reaction {
+      background: rgba(42, 171, 238, 0.15);
+      border: 1px solid rgba(42, 171, 238, 0.2);
+      border-radius: 100px;
+      padding: 2px 7px;
+      font-size: 0.62rem;
+      color: var(--tg-blue);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      cursor: default;
+    }
+
+    .msg-views {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.58rem;
+      color: var(--tg-muted);
+      margin-top: 3px;
+      justify-content: flex-end;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* STATS BAR */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 1300px;
+      margin: 4rem auto;
+      padding: 3rem;
+      background: rgba(24, 37, 51, 0.6);
+      border: 1px solid rgba(42, 171, 238, 0.1);
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+    }
+
+    @media (max-width: 768px) {
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem;
+        gap: 1rem;
+      }
+    }
+
+    .stat-cell {
+      text-align: center;
+    }
+
+    .stat-n {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--tg-blue);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-l {
+      font-size: 0.85rem;
+      color: var(--tg-muted);
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* SEÇÃO GENÉRICA */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .section {
+      padding: 6rem 3rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 4rem 1.5rem;
+      }
+    }
+
+    .s-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--tg-blue);
+      margin-bottom: 0.6rem;
+    }
+
+    .s-title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.8rem;
+    }
+
+    .s-title em {
+      font-style: normal;
+      color: var(--tg-blue);
+    }
+
+    .s-sub {
+      color: var(--tg-muted);
+      max-width: 500px;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* POR QUE TELEGRAM */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .why-bg {
+      background: linear-gradient(180deg, var(--tg-darker) 0%, rgba(28, 47, 63, 0.4) 50%, var(--tg-darker) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-bg::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      right: -20%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(42, 171, 238, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+
+    .why-card {
+      background: rgba(24, 37, 51, 0.7);
+      border: 1px solid rgba(42, 171, 238, 0.1);
+      border-radius: 18px;
+      padding: 1.8rem;
+      backdrop-filter: blur(12px);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(42, 171, 238, 0.4), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .why-card:hover {
+      border-color: rgba(42, 171, 238, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .why-card:hover::before {
+      opacity: 1;
+    }
+
+    .why-icon-wrap {
+      width: 50px;
+      height: 50px;
+      background: rgba(42, 171, 238, 0.1);
+      border: 1px solid rgba(42, 171, 238, 0.2);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .why-card h3 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .why-card p {
+      font-size: 0.87rem;
+      color: var(--tg-muted);
+      line-height: 1.7;
+    }
+
+    .why-tg-tag {
+      color: #3dbff5;
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* DEALS SECTION */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .deals-section {
+      padding: 5rem 3rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .deals-section {
+        padding: 4rem 1.5rem;
+      }
+    }
+
+    .deals-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .live-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(229, 57, 53, 0.1);
+      border: 1px solid rgba(229, 57, 53, 0.25);
+      color: #ef5350;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .live-pill-dot {
+      width: 7px;
+      height: 7px;
+      background: #ef5350;
+      border-radius: 50%;
+      animation: pulsate 1.5s infinite;
+    }
+
+    .deals-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .deal-post {
+      background: rgba(24, 37, 51, 0.8);
+      backdrop-filter: blur(8px);
+      padding: 1.4rem 1.6rem;
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 1.2rem;
+      align-items: start;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .deal-post:last-child {
+      border-bottom: none;
+    }
+
+    .deal-post:hover {
+      background: rgba(42, 171, 238, 0.06);
+    }
+
+    @media (max-width: 768px) {
+      .deal-post {
+        grid-template-columns: 60px 1fr;
+        padding: 1rem;
+        gap: 1rem;
+      }
+      .deal-post-right {
+        grid-column: 1 / -1;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .deal-post-emoji {
+      width: 72px;
+      height: 72px;
+      background: rgba(42, 171, 238, 0.08);
+      border-radius: 14px;
+      border: 1px solid rgba(42, 171, 238, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .deal-post-emoji {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
+
+    .deal-post-body {
+      min-width: 0;
+    }
+
+    .deal-post-cat {
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--tg-blue);
+      margin-bottom: 4px;
+    }
+
+    .deal-post-name {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .deal-post-prices {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .deal-post-new {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .deal-post-old {
+      font-size: 0.82rem;
+      color: var(--tg-muted);
+      text-decoration: line-through;
+    }
+
+    .deal-post-badge {
+      background: var(--red);
+      color: white;
+      font-size: 0.66rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+
+    .deal-post-reactions {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .deal-react {
+      background: rgba(42, 171, 238, 0.1);
+      border: 1px solid rgba(42, 171, 238, 0.2);
+      border-radius: 100px;
+      padding: 3px 9px;
+      font-size: 0.7rem;
+      color: var(--tg-blue);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .deal-react:hover {
+      background: rgba(42, 171, 238, 0.2);
+    }
+
+    .deal-post-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      padding-top: 2px;
+    }
+
+    .deal-post-time {
+      font-size: 0.68rem;
+      color: var(--tg-muted);
+      white-space: nowrap;
+    }
+
+    .deal-post-views {
+      font-size: 0.67rem;
+      color: var(--tg-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .deal-post-views svg {
+      width: 12px;
+      height: 12px;
+      fill: var(--tg-muted);
+      opacity: 0.7;
+    }
+
+    .deal-post-cta {
+      background: var(--tg-blue);
+      color: white;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: var(--transition);
+      display: block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .deal-post-cta:hover {
+      background: #3dbff5;
+      transform: scale(1.04);
+    }
+
+    .deal-post-cta:active {
+      transform: scale(1.02);
+    }
+
+    .deal-post-timer {
+      font-size: 0.65rem;
+      color: #ef5350;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .deals-channel-footer {
+      text-align: center;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .tg-channel-tag {
+      font-size: 0.78rem;
+      color: var(--tg-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tg-channel-tag svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--tg-blue);
+    }
+
+    .tg-channel-tag strong {
+      color: var(--tg-blue);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* COMO FUNCIONA */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .how-bg {
+      background: rgba(21, 33, 45, 0.6);
+      border-top: 1px solid rgba(42, 171, 238, 0.08);
+      border-bottom: 1px solid rgba(42, 171, 238, 0.08);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 1024px) {
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .step-card {
+      background: rgba(24, 37, 51, 0.6);
+      border: 1px solid rgba(42, 171, 238, 0.1);
+      border-radius: 16px;
+      padding: 1.6rem 1.3rem;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .step-card:hover {
+      border-color: rgba(42, 171, 238, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .step-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: rgba(42, 171, 238, 0.15);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .step-card h3 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .step-card p {
+      font-size: 0.83rem;
+      color: var(--tg-muted);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* FOOTER */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    footer {
+      background: linear-gradient(180deg, transparent 0%, rgba(42, 171, 238, 0.03) 100%);
+      border-top: 1px solid rgba(42, 171, 238, 0.08);
+      padding: 4rem 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        padding: 3rem 1.5rem 1.5rem;
+      }
+    }
+
+    .footer-content {
+      max-width: 1300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 0.85rem;
+      color: var(--tg-muted);
+      line-height: 1.6;
+    }
+
+    .footer-text strong {
+      color: var(--tg-text);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* REVEAL ANIMATION (Intersection Observer) */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: revealIn 0.8s ease forwards;
+    }
+
+    @keyframes revealIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* ACCESSIBILITY */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus visible para acessibilidade */
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--tg-blue);
+      outline-offset: 2px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* FAQ SECTION */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .faq-section {
+      background: linear-gradient(135deg, rgba(42, 171, 238, 0.05) 0%, rgba(42, 171, 238, 0.02) 100%);
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--tg-divider);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .faq-header h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--tg-blue), #1e96d3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .faq-header p {
+      color: var(--tg-muted);
+      font-size: 0.95rem;
+    }
+
+    .faq-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: rgba(24, 37, 51, 0.4);
+      border: 1px solid rgba(42, 171, 238, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      border-color: rgba(42, 171, 238, 0.3);
+      background: rgba(24, 37, 51, 0.6);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      background: none;
+      border: none;
+      color: var(--tg-text);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .faq-question:hover {
+      color: var(--tg-blue);
+    }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      fill: var(--tg-blue);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+    }
+
+    .faq-answer p {
+      padding: 0 1.5rem 1.2rem 1.5rem;
+      color: var(--tg-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════ */
+    /* CONTACT FORM SECTION */
+    /* ═══════════════════════════════════════════════════════════════ */
+
+    .contact-section {
+      padding: 4rem 2rem;
+      background: rgba(42, 171, 238, 0.02);
+    }
+
+    .contact-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-header h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--tg-blue), #1e96d3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-header p {
+      color: var(--tg-muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-form {
+      background: rgba(24, 37, 51, 0.4);
+      border: 1px solid rgba(42, 171, 238, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--tg-text);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(14, 22, 33, 0.6);
+      border: 1px solid rgba(42, 171, 238, 0.2);
+      border-radius: 8px;
+      color: var(--tg-text);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--tg-blue);
+      background: rgba(14, 22, 33, 0.8);
+      box-shadow: 0 0 0 3px rgba(42, 171, 238, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--tg-blue), #1e96d3);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(42, 171, 238, 0.3);
+    }
+
+    .form-submit:active {
+      transform: translateY(0);
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--tg-muted);
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .faq-section,
+      .contact-section {
+        padding: 2.5rem 1rem;
+      }
+
+      .faq-header h2,
+      .contact-header h2 {
+        font-size: 1.6rem;
+      }
+
+      .contact-form {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tg-wallpaper"></div>
+
+  <div class="page-wrap">
+    <!-- NAVBAR -->
+    <nav>
+      <a href="#" class="logo">
+        <div class="logo-plane">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.53 13.4l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.618.16z"/></svg>
+        </div>
+        <div class="logo-text">Telegram<span>Promoções</span></div>
+      </a>
+
+      <div class="nav-right">
+
+        <a href="https://t.me/promocoestelegramoficial" class="btn-join-nav" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.53 13.4l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.618.16z"/></svg>
+          Entrar
+        </a>
+      </div>
+    </nav>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <div class="ticker-item">💻 Notebook Lenovo <span class="ticker-pct">-42%</span></div>
+        <div class="ticker-item">🎧 Fone JBL <span class="ticker-pct">-57%</span></div>
+        <div class="ticker-item">📚 Curso Python <span class="ticker-pct">-86%</span></div>
+        <div class="ticker-item">⌚ Smartwatch <span class="ticker-pct">-65%</span></div>
+        <div class="ticker-item">💻 Notebook Lenovo <span class="ticker-pct">-42%</span></div>
+        <div class="ticker-item">🎧 Fone JBL <span class="ticker-pct">-57%</span></div>
+      </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-tag">⚡ Promoções em tempo real</div>
+        <h1>Ofertas que chegam <span class="tg-word">primeiro no Telegram</span></h1>
+        <p class="hero-desc">
+          Enquanto os grupos de WhatsApp ainda recebem a oferta, quem está no nosso canal no <strong>Telegram já comprou</strong>. Curadoria manual, notificação em tempo real, zero spam.
+        </p>
+        <a href="https://t.me/promocoestelegramoficial" class="btn-hero" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.53 13.4l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.618.16z"/></svg>
+          Entrar no Canal — É Grátis
+        </a>
+        <div class="hero-proof">
+          <div class="proof-avatars">
+            <div class="proof-av" style="background:#2AABEE">CM</div>
+            <div class="proof-av" style="background:#4dcd5e">RO</div>
+            <div class="proof-av" style="background:#f5a623;color:#3d2800">JF</div>
+            <div class="proof-av" style="background:#9c27b0">MS</div>
+            <div class="proof-av" style="background:#e53935">LB</div>
+          </div>
+          <p class="proof-text"><strong>Junte-se à comunidade</strong><br>de economizadores</p>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="tg-header-ui">
+              <div class="tg-channel-avatar">TP</div>
+              <div class="tg-channel-info">
+                <div class="tg-channel-name">TelegramPromoções</div>
+                <div class="tg-channel-sub">Canal de promoções</div>
+              </div>
+              <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:var(--tg-muted);margin-left:auto;cursor:pointer" aria-hidden="true"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            </div>
+            <div class="tg-chat">
+              <div class="chat-date">Hoje</div>
+
+              <div class="msg msg-1">
+                <div class="msg-emoji">💻</div>
+                <div class="msg-category">Eletrônicos · Amazon</div>
+                <div class="msg-product">Notebook Lenovo IdeaPad<br>8GB · 256GB SSD</div>
+                <div class="msg-price-row">
+                  <span class="msg-price">R$2.199</span>
+                  <span class="msg-price-old">R$3.799</span>
+                  <span class="msg-discount">-42%</span>
+                </div>
+                <a class="msg-link">🔗 Ver oferta →</a>
+                <div class="msg-reactions">
+                  <span class="reaction">🔥 Muito bom</span>
+                  <span class="reaction">❤️ Recomendado</span>
+                </div>
+                <div class="msg-time">14:32</div>
+              </div>
+
+              <div class="msg msg-2">
+                <div class="msg-emoji">🎧</div>
+                <div class="msg-category">Áudio · Shopee</div>
+                <div class="msg-product">Fone JBL Tune 510BT<br>40h · Bluetooth 5.0</div>
+                <div class="msg-price-row">
+                  <span class="msg-price">R$149</span>
+                  <span class="msg-price-old">R$349</span>
+                  <span class="msg-discount">-57%</span>
+                </div>
+                <a class="msg-link">🔗 Ver oferta →</a>
+                <div class="msg-reactions">
+                  <span class="reaction">🔥 Muito bom</span>
+                  <span class="reaction">🛒 Popular</span>
+                </div>
+                <div class="msg-time">16:47</div>
+              </div>
+
+              <div class="msg msg-3">
+                <div class="msg-emoji">📚</div>
+                <div class="msg-category">Cursos · Hotmart</div>
+                <div class="msg-product">Python do Zero<br>ao Avançado</div>
+                <div class="msg-price-row">
+                  <span class="msg-price">R$27</span>
+                  <span class="msg-price-old">R$197</span>
+                  <span class="msg-discount">-86%</span>
+                </div>
+                <a class="msg-link">🔗 Ver oferta →</a>
+                <div class="msg-reactions">
+                  <span class="reaction">🔥 Imperdível</span>
+                  <span class="reaction">❤️ Recomendado</span>
+                </div>
+                <div class="msg-time">18:20</div>
+              </div>
+            </div>
+          </div>
+          <div style="width:200px;height:20px;background:rgba(42,171,238,0.15);filter:blur(20px);border-radius:50%;margin:0 auto;margin-top:8px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar reveal">
+      <div class="stat-cell">
+        <div class="stat-n">24/7</div>
+        <div class="stat-l">Monitoramento de Ofertas</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n">100%</div>
+        <div class="stat-l">Curadoria Manual</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n">∞</div>
+        <div class="stat-l">Histórico Pesquisável</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n">100%</div>
+        <div class="stat-l">Gratuito</div>
+      </div>
+    </div>
+
+    <!-- POR QUE TELEGRAM -->
+    <div class="why-bg">
+      <section class="section reveal">
+        <div class="s-label">A diferença real</div>
+        <h2 class="s-title">Por que o <em>Telegram</em><br>chega primeiro</h2>
+        <p class="s-sub">O Telegram foi construído para velocidade e volume. Cada recurso abaixo é uma vantagem concreta para quem quer comprar bem.</p>
+        <div class="why-grid">
+          <div class="why-card reveal">
+            <div class="why-icon-wrap">⚡</div>
+            <h3>Notificação antes de todo mundo</h3>
+            <p>No <span class="why-tg-tag">Telegram</span>, a oferta aparece instantaneamente. Nos grupos de WhatsApp, a mesma promoção chega horas depois — quando o estoque já acabou.</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="why-icon-wrap">🔍</div>
+            <h3>Histórico pesquisável</h3>
+            <p>Digite "notebook" no canal do <span class="why-tg-tag">Telegram</span> e encontre todas as promoções anteriores. No WhatsApp, a mensagem se perdeu em horas de scroll.</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="why-icon-wrap">🔕</div>
+            <h3>Zero spam. Zero ruído.</h3>
+            <p>Canal do <span class="why-tg-tag">Telegram</span> é unidirecional. Só postamos quando há oferta real. Sem corrente, sem gif de bom dia, sem 300 mensagens por dia.</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="why-icon-wrap">🔒</div>
+            <h3>Número 100% protegido</h3>
+            <p>No nosso canal <span class="why-tg-tag">Telegram</span>, nenhum membro vê seu número. Em grupos de WhatsApp, entrar expõe seu contato para centenas de desconhecidos.</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="why-icon-wrap">❤️</div>
+            <h3>Reações e engajamento</h3>
+            <p>O <span class="why-tg-tag">Telegram</span> mostra quantas pessoas reagiram a cada oferta. Se 2.000 pessoas colocaram 🔥, é sinal que a promoção é boa de verdade.</p>
+          </div>
+          <div class="why-card reveal">
+            <div class="why-icon-wrap">🌐</div>
+            <h3>Sem limite de membros</h3>
+            <p>Canais no <span class="why-tg-tag">Telegram</span> têm capacidade ilimitada de assinantes. Mais membros = mais força coletiva e ofertas melhores negociadas.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- DEALS FEED -->
+    <section class="deals-section reveal">
+      <div class="deals-top">
+        <div>
+          <div class="s-label">Feed do canal</div>
+          <h2 class="s-title">Promoções de <em>hoje</em></h2>
+        </div>
+        <div class="live-pill"><div class="live-pill-dot"></div>Ao vivo no Telegram</div>
+      </div>
+
+      <div class="deals-feed">
+        <div class="deal-post">
+          <div class="deal-post-emoji">💻</div>
+          <div class="deal-post-body">
+            <div class="deal-post-cat">Eletrônicos · Amazon</div>
+            <div class="deal-post-name">Notebook Lenovo IdeaPad 3i<br>8GB RAM · 256GB SSD · Win11</div>
+            <div class="deal-post-prices">
+              <span class="deal-post-new">R$2.199</span>
+              <span class="deal-post-old">R$3.799</span>
+              <span class="deal-post-badge">-42%</span>
+            </div>
+            <div class="deal-post-reactions">
+              <span class="deal-react">🔥 Muito bom</span>
+              <span class="deal-react">❤️ Recomendado</span>
+            </div>
+          </div>
+          <div class="deal-post-right">
+            <span class="deal-post-time">14:32</span>
+
+            <a href="https://t.me/promocoestelegramoficial" class="deal-post-cta" target="_blank" rel="noopener noreferrer">Ver no Telegram</a>
+            <span class="deal-post-timer">⏱ 2h 14min</span>
+          </div>
+        </div>
+
+        <div class="deal-post">
+          <div class="deal-post-emoji">🎧</div>
+          <div class="deal-post-body">
+            <div class="deal-post-cat">Áudio · Shopee</div>
+            <div class="deal-post-name">Fone JBL Tune 510BT<br>40h de bateria · Bluetooth 5.0</div>
+            <div class="deal-post-prices">
+              <span class="deal-post-new">R$149</span>
+              <span class="deal-post-old">R$349</span>
+              <span class="deal-post-badge">-57%</span>
+            </div>
+            <div class="deal-post-reactions">
+              <span class="deal-react">🔥 Muito bom</span>
+              <span class="deal-react">🛒 Popular</span>
+            </div>
+          </div>
+          <div class="deal-post-right">
+            <span class="deal-post-time">16:47</span>
+
+            <a href="https://t.me/promocoestelegramoficial" class="deal-post-cta" target="_blank" rel="noopener noreferrer">Ver no Telegram</a>
+            <span class="deal-post-timer">⏱ 5h 40min</span>
+          </div>
+        </div>
+
+        <div class="deal-post">
+          <div class="deal-post-emoji">📚</div>
+          <div class="deal-post-body">
+            <div class="deal-post-cat">Cursos Digitais · Hotmart</div>
+            <div class="deal-post-name">Python do Zero ao Avançado<br>Certificado incluso · 120h de conteúdo</div>
+            <div class="deal-post-prices">
+              <span class="deal-post-new">R$27</span>
+              <span class="deal-post-old">R$197</span>
+              <span class="deal-post-badge">-86%</span>
+            </div>
+            <div class="deal-post-reactions">
+              <span class="deal-react">🔥 Imperdível</span>
+              <span class="deal-react">❤️ Recomendado</span>
+            </div>
+          </div>
+          <div class="deal-post-right">
+            <span class="deal-post-time">18:20</span>
+
+            <a href="https://t.me/promocoestelegramoficial" class="deal-post-cta" target="_blank" rel="noopener noreferrer">Ver no Telegram</a>
+            <span class="deal-post-timer">⏱ Últimas vagas</span>
+          </div>
+        </div>
+
+        <div class="deal-post">
+          <div class="deal-post-emoji">⌚</div>
+          <div class="deal-post-body">
+            <div class="deal-post-cat">Wearables · AliExpress</div>
+            <div class="deal-post-name">Smartwatch Pro Max<br>AMOLED · GPS · 10 dias bateria</div>
+            <div class="deal-post-prices">
+              <span class="deal-post-new">R$189</span>
+              <span class="deal-post-old">R$549</span>
+              <span class="deal-post-badge">-65%</span>
+            </div>
+            <div class="deal-post-reactions">
+              <span class="deal-react">🔥 Imperdível</span>
+              <span class="deal-react">❤️ Muito bom</span>
+            </div>
+          </div>
+          <div class="deal-post-right">
+            <span class="deal-post-time">12:15</span>
+
+            <a href="https://t.me/promocoestelegramoficial" class="deal-post-cta" target="_blank" rel="noopener noreferrer">Ver no Telegram</a>
+            <span class="deal-post-timer">⏱ 8h 30min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="deals-channel-footer">
+        <div class="tg-channel-tag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.53 13.4l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.618.16z"/></svg>
+          <strong>@promocoestelegramoficial</strong>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--tg-muted);">Mais promoções chegam a cada hora. Ative as notificações para não perder nenhuma!</p>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <div class="how-bg">
+      <section class="section reveal">
+        <div class="s-label">Simples e rápido</div>
+        <h2 class="s-title">Como <em>funciona</em></h2>
+        <p class="s-sub">Você entra, recebe notificações de promoções em tempo real e aproveita as melhores ofertas antes de qualquer um.</p>
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <div class="step-num">1</div>
+            <h3>Clique em "Entrar"</h3>
+            <p>Você será redirecionado para o Telegram. Se não tem o app, baixe em 30 segundos — é grátis.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">2</div>
+            <h3>Inscreva-se no canal</h3>
+            <p>Clique em "Inscrever" e pronto. Você agora faz parte da comunidade de economizadores.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">3</div>
+            <h3>Ative notificações</h3>
+            <p>Não perca nenhuma promoção. Ative notificações do canal e receba alertas em tempo real.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">4</div>
+            <h3>Comece a economizar</h3>
+            <p>Cada oferta tem link direto. Clique, compre e economize. Tudo de forma segura e rápida.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section reveal" id="faq">
+      <div class="faq-container">
+        <div class="faq-header">
+          <h2>Perguntas Frequentes</h2>
+          <p>Tire suas dúvidas sobre o TelegramPromoções</p>
+        </div>
+        
+        <div class="faq-items">
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>É realmente gratuito?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Sim! 100% gratuito. Não cobramos nada para você receber as promoções. Ganhamos comissão quando você compra através dos nossos links de afiliado.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>Meus dados estão seguros?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Sim. Você se inscreve diretamente no Telegram, não compartilha dados conosco. O Telegram é uma plataforma segura com criptografia de ponta a ponta.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>Vou receber spam?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Não. Nossas mensagens são apenas promoções reais e verificadas. Você pode desativar notificações a qualquer momento ou sair do canal sem problemas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>Como funciona o desconto?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Cada promoção tem um link direto para a loja. Você clica, compra normalmente, e aproveita o desconto. Nós não intermediamos a compra, apenas indicamos as melhores ofertas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>Posso sugerir produtos/categorias?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Claro! Use o formulário de sugestões abaixo ou envie uma mensagem no Telegram. Suas sugestões nos ajudam a melhorar e trazer promoções que você realmente quer.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>Por que Telegram e não WhatsApp?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Telegram permite canais sem limite de membros, histórico pesquisável, notificações silenciosas e melhor organização. Você encontra promoções antigas e não é bombardeado com mensagens.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section class="contact-section reveal" id="contato">
+      <div class="contact-container">
+        <div class="contact-header">
+          <h2>Sugestões & Feedback</h2>
+          <p>Nos ajude a melhorar! Sugira produtos, categorias ou deixe seu feedback</p>
+        </div>
+
+        <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="name">Seu Nome</label>
+            <input type="text" id="name" name="name" placeholder="João Silva" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Assunto</label>
+            <select id="subject" name="subject" required>
+              <option value="">Selecione um assunto</option>
+              <option value="sugestao">Sugestão de Produto</option>
+              <option value="categoria">Sugestão de Categoria</option>
+              <option value="feedback">Feedback Geral</option>
+              <option value="problema">Reportar Problema</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" placeholder="Conte-nos sua ideia..." rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Enviar Sugestão</button>
+          <p class="form-note">Responderemos em até 24 horas</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <p class="footer-text">
+          <strong>TelegramPromoções</strong> — O lugar onde as melhores ofertas chegam primeiro.<br>
+          Promoções curadas manualmente, notificações em tempo real, 100% gratuito. Sem spam, sem compromisso.
+        </p>
+        <p class="footer-text" style="margin-top: 1.5rem; font-size: 0.75rem;">
+          © 2026 TelegramPromoções. Todos os direitos reservados. | <a href="#" style="color: var(--tg-blue); text-decoration: none;">Privacidade</a> | <a href="#" style="color: var(--tg-blue); text-decoration: none;">Termos</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════════
+    // FAQ ACCORDION
+    // ═══════════════════════════════════════════════════════════════
+
+    function toggleFaq(button) {
+      const faqItem = button.parentElement;
+      const isActive = faqItem.classList.contains('active');
+      
+      // Fechar todos os outros itens
+      document.querySelectorAll('.faq-item').forEach((item) => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+        }
+      });
+      
+      // Toggle o item atual
+      faqItem.classList.toggle('active');
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // CONTACT FORM HANDLER
+    // ═══════════════════════════════════════════════════════════════
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const form = event.target;
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // Simular envio (em produção, isso seria um POST para um backend)
+      console.log('Formulário enviado:', { name, email, subject, message });
+      
+      // Mostrar mensagem de sucesso
+      const submitBtn = form.querySelector('.form-submit');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = '✓ Enviado com sucesso!';
+      submitBtn.style.background = 'linear-gradient(135deg, #4dcd5e, #2ecc71)';
+      
+      // Limpar formulário
+      form.reset();
+      
+      // Restaurar botão após 3 segundos
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.background = '';
+      }, 3000);
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // INTERSECTION OBSERVER PARA ANIMAÇÕES REVEAL
+    // ═══════════════════════════════════════════════════════════════
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observar todos os elementos com classe reveal
+    document.querySelectorAll('.reveal').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // ═══════════════════════════════════════════════════════════════
+    // SMOOTH SCROLL PARA LINKS INTERNOS
+    // ═══════════════════════════════════════════════════════════════
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════════════
+    // PERFORMANCE: Lazy load images (se houver)
+    // ═══════════════════════════════════════════════════════════════
+
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+            }
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+
+      document.querySelectorAll('img[data-src]').forEach((img) => {
+        imageObserver.observe(img);
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // ACESSIBILIDADE: Suporte a teclado
+    // ═══════════════════════════════════════════════════════════════
+
+    document.addEventListener('keydown', (e) => {
+      // Esc para fechar modais (se houver)
+      if (e.key === 'Escape') {
+        // Implementar lógica de modal aqui se necessário
+      }
+    });
+  </script>
+</body>
+
+</html>
